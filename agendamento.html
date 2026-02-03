@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento - Serviço | Barbearia</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); 
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      color: #f0f0f0; 
+    }
+    .container { 
+      max-width: 400px; 
+      padding: 40px 30px; 
+      background: rgba(45, 45, 45, 0.95); 
+      border-radius: 25px; 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
+      backdrop-filter: blur(10px); 
+      border: 1px solid #b8b8b8; 
+    }
+    h1 { 
+      text-align: center; 
+      font-size: 2.2em; 
+      margin-bottom: 30px; 
+      background: linear-gradient(45deg, #ffffff, #e0a080); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      font-weight: 300; 
+    }
+    .service-grid { 
+      display: grid; 
+      gap: 15px; 
+      margin-bottom: 30px; 
+    }
+    .service-card { 
+      padding: 20px; 
+      background: linear-gradient(145deg, #353535, #2d2d2d); 
+      border-radius: 15px; 
+      cursor: pointer; 
+      transition: all 0.3s ease; 
+      border: 1px solid transparent; 
+      text-align: center; 
+    }
+    .service-card:hover { 
+      transform: translateY(-5px); 
+      box-shadow: 0 10px 25px rgba(224, 160, 128, 0.3); 
+      border-color: #e0a080; 
+    }
+    .service-card.selected { 
+      background: linear-gradient(145deg, #e0a080, #b8b8b8); 
+      color: #1a1a1a; 
+    }
+    .service-name { font-size: 1.1em; font-weight: 500; margin-bottom: 5px; }
+    button { 
+      width: 100%; 
+      padding: 15px; 
+      background: linear-gradient(45deg, #e0a080, #b8b8b8); 
+      color: #1a1a1a; 
+      border: none; 
+      border-radius: 15px; 
+      font-size: 1.1em; 
+      font-weight: 500; 
+      cursor: pointer; 
+      transition: all 0.3s ease; 
+    }
+    button:hover { transform: scale(1.02); box-shadow: 0 10px 25px rgba(224, 160, 128, 0.4); }
+    button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Escolha o Serviço</h1>
+    <div class="service-grid" id="serviceGrid">
+      <div class="service-card" data-servico="cabelo">
+        <div class="service-name">Cabelo</div>
+      </div>
+      <div class="service-card" data-servico="barba">
+        <div class="service-name">Barba</div>
+      </div>
+      <div class="service-card" data-servico="cabelo_barba">
+        <div class="service-name">Cabelo + Barba</div>
+      </div>
+      <div class="service-card" data-servico="colorir">
+        <div class="service-name">Colorir Cabelo</div>
+      </div>
+    </div>
+    <button id="nextBtn" disabled>Próximo →</button>
+  </div>
+
+  <script>
+    let selectedService = '';
+    const cards = document.querySelectorAll('.service-card');
+    const nextBtn = document.getElementById('nextBtn');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        cards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        selectedService = card.dataset.servico;
+        nextBtn.disabled = false;
+      });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      window.location.href = `agendamento2.html?servico=${selectedService}`;
+    });
+  </script>
+</body>
+</html>
