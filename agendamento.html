@@ -3,112 +3,168 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agendamento - Serviço | Barbearia</title>
+  <title>Agendamento - Serviço | Barbearia Premium</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
+    body, html { 
+      height: 100vh; 
+      overflow: hidden;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); 
-      min-height: 100vh; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #3a3a3a 100%); 
       color: #f0f0f0; 
     }
-    .container { 
-      max-width: 400px; 
-      padding: 40px 30px; 
-      background: rgba(45, 45, 45, 0.95); 
-      border-radius: 25px; 
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
-      backdrop-filter: blur(10px); 
-      border: 1px solid #b8b8b8; 
+    .page { 
+      height: 100vh; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center; 
+      padding: 0 20px;
+      position: relative;
     }
     h1 { 
-      text-align: center; 
-      font-size: 2.2em; 
-      margin-bottom: 30px; 
-      background: linear-gradient(45deg, #ffffff, #e0a080); 
-      -webkit-background-clip: text; 
-      -webkit-text-fill-color: transparent; 
+      font-size: clamp(2.5rem, 6vw, 4rem); 
+      margin-bottom: 8vh; 
       font-weight: 300; 
+      text-align: center;
+      text-shadow: 0 0 30px rgba(224, 160, 128, 0.5);
     }
     .service-grid { 
       display: grid; 
-      gap: 15px; 
-      margin-bottom: 30px; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px; 
+      max-width: 1200px;
+      width: 100%;
+      padding: 0 10%;
     }
     .service-card { 
-      padding: 20px; 
-      background: linear-gradient(145deg, #353535, #2d2d2d); 
-      border-radius: 15px; 
+      padding: 40px 30px; 
+      background: linear-gradient(145deg, rgba(53,53,53,0.8), rgba(45,45,45,0.9)); 
+      border-radius: 25px; 
       cursor: pointer; 
-      transition: all 0.3s ease; 
-      border: 1px solid transparent; 
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+      border: 2px solid transparent; 
       text-align: center; 
+      backdrop-filter: blur(15px);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(45deg, transparent, rgba(224,160,128,0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
     }
     .service-card:hover { 
-      transform: translateY(-5px); 
-      box-shadow: 0 10px 25px rgba(224, 160, 128, 0.3); 
+      transform: translateY(-15px) scale(1.05); 
+      box-shadow: 0 30px 60px rgba(0,0,0,0.7), 0 0 40px rgba(224,160,128,0.4); 
       border-color: #e0a080; 
     }
+    .service-card:hover::before { opacity: 1; }
     .service-card.selected { 
-      background: linear-gradient(145deg, #e0a080, #b8b8b8); 
-      color: #1a1a1a; 
+      background: linear-gradient(145deg, #e0a080, #d4a375); 
+      color: #1a1a1a;
+      box-shadow: 0 20px 50px rgba(224,160,128,0.6);
+      border-color: #ffd700;
     }
-    .service-name { font-size: 1.1em; font-weight: 500; margin-bottom: 5px; }
+    .service-name { 
+      font-size: clamp(1.4rem, 3vw, 2rem); 
+      font-weight: 600; 
+      margin-bottom: 10px; 
+    }
+    .service-price {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: #ffd700;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+      margin-top: 5px;
+    }
+    .nav-buttons {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+    }
     button { 
-      width: 100%; 
-      padding: 15px; 
-      background: linear-gradient(45deg, #e0a080, #b8b8b8); 
+      padding: 18px 40px; 
+      background: linear-gradient(45deg, #e0a080, #ffd700); 
       color: #1a1a1a; 
       border: none; 
-      border-radius: 15px; 
-      font-size: 1.1em; 
-      font-weight: 500; 
+      border-radius: 50px; 
+      font-size: 1.2rem; 
+      font-weight: 600; 
       cursor: pointer; 
       transition: all 0.3s ease; 
+      box-shadow: 0 10px 30px rgba(224,160,128,0.4);
+      min-width: 160px;
     }
-    button:hover { transform: scale(1.02); box-shadow: 0 10px 25px rgba(224, 160, 128, 0.4); }
-    button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    button:hover { 
+      transform: translateY(-3px) scale(1.05); 
+      box-shadow: 0 15px 40px rgba(224,160,128,0.6); 
+    }
+    button:disabled { 
+      opacity: 0.4; 
+      cursor: not-allowed; 
+      transform: none; 
+      box-shadow: none;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Escolha o Serviço</h1>
+  <div class="page">
+    <h1>Escolha seu Serviço</h1>
     <div class="service-grid" id="serviceGrid">
-      <div class="service-card" data-servico="cabelo">
-        <div class="service-name">Cabelo</div>
+      <div class="service-card" data-servico="cabelo" data-preco="45">
+        <div class="service-name">Corte de Cabelo</div>
+        <div class="service-price">R$ 45</div>
       </div>
-      <div class="service-card" data-servico="barba">
-        <div class="service-name">Barba</div>
+      <div class="service-card" data-servico="barba" data-preco="35">
+        <div class="service-name">Barba Completa</div>
+        <div class="service-price">R$ 35</div>
       </div>
-      <div class="service-card" data-servico="cabelo_barba">
+      <div class="service-card" data-servico="cabelo_barba" data-preco="70">
         <div class="service-name">Cabelo + Barba</div>
+        <div class="service-price">R$ 70</div>
       </div>
-      <div class="service-card" data-servico="colorir">
-        <div class="service-name">Colorir Cabelo</div>
+      <div class="service-card" data-servico="colorir" data-preco="90">
+        <div class="service-name">Coloração</div>
+        <div class="service-price">R$ 90</div>
       </div>
     </div>
-    <button id="nextBtn" disabled>Próximo →</button>
+    <div class="nav-buttons">
+      <button id="backBtn1" style="visibility: hidden;">← Voltar</button>
+      <button id="nextBtn" disabled>Próximo →</button>
+    </div>
   </div>
 
   <script>
     let selectedService = '';
+    let selectedPrice = '';
     const cards = document.querySelectorAll('.service-card');
     const nextBtn = document.getElementById('nextBtn');
+    const backBtn1 = document.getElementById('backBtn1');
 
     cards.forEach(card => {
       card.addEventListener('click', () => {
         cards.forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
         selectedService = card.dataset.servico;
+        selectedPrice = card.dataset.preco;
         nextBtn.disabled = false;
+        backBtn1.style.visibility = 'visible';
       });
     });
 
     nextBtn.addEventListener('click', () => {
-      window.location.href = `agendamento2.html?servico=${selectedService}`;
+      window.location.href = `agendamento2.html?servico=${selectedService}&preco=${selectedPrice}`;
+    });
+
+    backBtn1.addEventListener('click', () => {
+      window.location.href = 'index.html';
     });
   </script>
 </body>
