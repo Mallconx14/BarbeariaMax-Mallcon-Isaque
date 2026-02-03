@@ -2,31 +2,37 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Cadastro simples</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f2f2f2;
+      background: #4d4d4d;
     }
 
     .container {
       max-width: 320px;
       margin: 80px auto;
-      background: #ffffff;
+      background: #333333;
       padding: 20px;
-      border-radius: 8px;
+      border-radius: 20px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border: 2px solid #d3d3d3
     }
 
-    h2 {
+    h1 {
       text-align: center;
       margin-bottom: 20px;
+      font-size: 45px;
+      font-family: Times New Roman;
+      color: #ffffff;
     }
 
     label {
       display: block;
       margin-bottom: 5px;
       font-size: 14px;
+      color: #ffffff;
     }
 
     input {
@@ -39,14 +45,17 @@
     button {
       width: 100%;
       padding: 10px;
-      background: #0026ff;
+      background: #666666;
       color: #fff;
       border: none;
+      border-radius: 10px;
       cursor: pointer;
+      font-family: Times New Roman;
+      font-size: 20px;
     }
 
     button:hover {
-      background: #0026ff;
+      background: #666666;
     }
 
     p {
@@ -59,7 +68,7 @@
 </head>
 <body>
   <div class="container">
-    <h2>Cadastro</h2>
+    <h1>Cadastro</h1>
     <form action="#" method="post">
       <label for="nome">Nome completo</label>
       <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
