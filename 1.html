@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbearia Vintage - Tradição e Estilo</title>
+    <link rel="stylesheet" href="./1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                <img src="assets/logo.svg" alt="Barbearia Vintage">
+                <span>Barbearia Vintage</span>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active">Início</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#profissionais">Profissionais</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="login.html" class="btn-login"><i class="fas fa-user"></i> Entrar</a></li>
+                <li><a href="agendamento.html" class="btn-agendar"><i class="fas fa-calendar"></i> Agendar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content container">
+                <h1 class="animate-title">Estilo e Tradição <br>em Cada Corte</h1>
+                <p class="animate-text">Experiência única em barbearia com os melhores profissionais da cidade</p>
+                <div class="hero-buttons">
+                    <a href="agendamento.html" class="btn btn-primary">Agendar Horário</a>
+                    <a href="#servicos" class="btn btn-outline">Conheça Nossos Serviços</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Serviços -->
+        <section id="servicos" class="servicos">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Nossos Serviços</h2>
+                    <p>Cuidados especiais para o homem moderno</p>
+                </div>
+
+                <div class="servicos-grid">
+                    <div class="servico-card" data-servico="corte">
+                        <div class="servico-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <h3>Corte Clássico</h3>
+                        <p>Corte tradicional com tesoura e máquina</p>
+                        <div class="servico-info">
+                            <span class="preco">R$ 45,00</span>
+                            <span class="duracao">30 min</span>
+                        </div>
+                        <button class="btn-select-servico">Selecionar</button>
+                    </div>
+
+                    <div class="servico-card" data-servico="barba">
+                        <div class="servico-icon">
+                            <i class="fas fa-razor"></i>
+                        </div>
+                        <h3>Barba Completa</h3>
+                        <p>Barba feita com navalha e produtos especiais</p>
+                        <div class="servico-info">
+                            <span class="preco">R$ 35,00</span>
+                            <span class="duracao">30 min</span>
+                        </div>
+                        <button class="btn-select-servico">Selecionar</button>
+                    </div>
+
+                    <div class="servico-card" data-servico="corte-barba">
+                        <div class="servico-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Corte + Barba</h3>
+                        <p>Combo completo com valor especial</p>
+                        <div class="servico-info">
+                            <span class="preco">R$ 70,00</span>
+                            <span class="duracao">60 min</span>
+                        </div>
+                        <button class="btn-select-servico">Selecionar</button>
+                    </div>
+
+                    <div class="servico-card" data-servico="sobrancelha">
+                        <div class="servico-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Sobrancelha</h3>
+                        <p>Design de sobrancelha com cera ou pinça</p>
+                        <div class="servico-info">
+                            <span class="preco">R$ 20,00</span>
+                            <span class="duracao">15 min</span>
+                        </div>
+                        <button class="btn-select-servico">Selecionar</button>
+                    </div>
+
+                    <div class="servico-card" data-servico="pigmentacao">
+                        <div class="servico-icon">
+                            <i class="fas fa-pen-fancy"></i>
+                        </div>
+                        <h3>Pigmentação</h3>
+                        <p>Pigmentação para barba e falhas</p>
+                        <div class="servico-info">
+                            <span class="preco">R$ 80,00</span>
+                            <span class="duracao">45 min</span>
+                        </div>
+                        <button class="btn-select-servico">Selecionar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profissionais -->
+        <section id="profissionais" class="profissionais">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Nossos Profissionais</h2>
+                    <p>Especialistas dedicados a realçar sua elegância</p>
+                </div>
+
+                <div class="profissionais-grid">
+                    <div class="profissional-card">
+                        <div class="profissional-img">
+                            <img src="assets/barbeiro1.jpg" alt="João Silva - Mestre Barbeiro">
+                            <div class="profissional-social">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                        <div class="profissional-info">
+                            <h3>João Silva</h3>
+                            <p class="especialidade">Especialista em Cortes Clássicos</p>
+                            <div class="avaliacao">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(128 avaliações)</span>
+                            </div>
+                            <button class="btn-agendar-profissional" data-profissional="joao">Agendar com João</button>
+                        </div>
+                    </div>
+
+                    <div class="profissional-card">
+                        <div class="profissional-img">
+                            <img src="assets/barbeiro2.jpg" alt="Pedro Santos - Barbeiro">
+                            <div class="profissional-social">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                        <div class="profissional-info">
+                            <h3>Pedro Santos</h3>
+                            <p class="especialidade">Especialista em Barba e Navalha</p>
+                            <div class="avaliacao">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(95 avaliações)</span>
+                            </div>
+                            <button class="btn-agendar-profissional" data-profissional="pedro">Agendar com Pedro</button>
+                        </div>
+                    </div>
+
+                    <div class="profissional-card">
+                        <div class="profissional-img">
+                            <img src="assets/barbeiro3.jpg" alt="Carlos Oliveira - Barbeiro">
+                            <div class="profissional-social">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                        <div class="profissional-info">
+                            <h3>Carlos Oliveira</h3>
+                            <p class="especialidade">Especialista em Pigmentação</p>
+                            <div class="avaliacao">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(156 avaliações)</span>
+                            </div>
+                            <button class="btn-agendar-profissional" data-profissional="carlos">Agendar com Carlos</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre Nós -->
+        <section id="sobre" class="sobre">
+            <div class="container">
+                <div class="sobre-content">
+                    <div class="sobre-texto">
+                        <h2>Sobre Nós</h2>
+                        <p>Fundada em 2010, a Barbearia Vintage nasceu do sonho de resgatar a tradição das barbearias clássicas, onde o cuidado com o visual era uma arte e a conversa fluía naturalmente.</p>
+                        <p>Nossa missão é proporcionar uma experiência única, combinando técnicas tradicionais com tendências modernas, em um ambiente acolhedor e sofisticado.</p>
+                        <div class="sobre-valores">
+                            <div class="valor">
+                                <i class="fas fa-clock"></i>
+                                <h4>Tradição</h4>
+                                <p>Técnicas apuradas ao longo de gerações</p>
+                            </div>
+                            <div class="valor">
+                                <i class="fas fa-star"></i>
+                                <h4>Qualidade</h4>
+                                <p>Produtos premium e atendimento exclusivo</p>
+                            </div>
+                            <div class="valor">
+                                <i class="fas fa-handshake"></i>
+                                <h4>Confiança</h4>
+                                <p>Relacionamento duradouro com clientes</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sobre-imagem">
+                        <img src="assets/barbearia-interior.jpg" alt="Interior da Barbearia Vintage">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Depoimentos -->
+        <section id="depoimentos" class="depoimentos">
+            <div class="container">
+                <div class="section-header">
+                    <h2>O que nossos clientes dizem</h2>
+                </div>
+
+                <div class="carrossel-container">
+                    <div class="carrossel" id="carrossel">
+                        <div class="depoimento-card">
+                            <div class="depoimento-avatar">
+                                <img src="assets/cliente1.jpg" alt="Cliente 1">
+                            </div>
+                            <div class="depoimento-texto">
+                                <i class="fas fa-quote-left"></i>
+                                <p>Melhor barbearia da cidade! Ambiente incrível e profissionais muito talentosos. Recomendo o João para cortes clássicos.</p>
+                                <div class="depoimento-autor">
+                                    <strong>Ricardo Mendes</strong>
+                                    <span>Cliente desde 2019</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="depoimento-card">
+                            <div class="depoimento-avatar">
+                                <img src="assets/cliente2.jpg" alt="Cliente 2">
+                            </div>
+                            <div class="depoimento-texto">
+                                <i class="fas fa-quote-left"></i>
+                                <p>Atendimento excepcional! O Pedro fez um trabalho incrível na minha barba. Com certeza voltarei mais vezes.</p>
+                                <div class="depoimento-autor">
+                                    <strong>André Santos</strong>
+                                    <span>Cliente desde 2020</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="depoimento-card">
+                            <div class="depoimento-avatar">
+                                <img src="assets/cliente3.jpg" alt="Cliente 3">
+                            </div>
+                            <div class="depoimento-texto">
+                                <i class="fas fa-quote-left"></i>
+                                <p>Ambiente aconchegante e equipe muito profissional. A pigmentação que fiz com o Carlos ficou perfeita!</p>
+                                <div class="depoimento-autor">
+                                    <strong>Marcos Paulo</strong>
+                                    <span>Cliente desde 2021</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carrossel-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carrossel-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contato" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="logo">
+                        <img src="assets/logo.svg" alt="Barbearia Vintage">
+                        <span>Barbearia Vintage</span>
+                    </div>
+                    <p>Tradição e estilo em cada corte</p>
+                    <div class="redes-sociais">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#profissionais">Profissionais</a></li>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="login.html">Área do Cliente</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contato">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua das Barbearias, 123 - Centro</p>
+                    <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@barbeariavintage.com</p>
+                    <p><i class="fas fa-clock"></i> Seg-Sáb: 9h às 20h | Dom: Fechado</p>
+                </div>
+
+                <div class="footer-mapa">
+                    <h4>Localização</h4>
+                    <div class="mapa-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.123456789012!2d-46.654321!3d-23.567890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDM0JzA0LjQiUyA0NsKwMzknMTUuNiJX!5e0!3m2!1spt-BR!2sbr!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Barbearia Vintage. Todos os direitos reservados.</p>
+                <p>Desenvolvido com <i class="fas fa-heart"></i> para verdadeiros cavalheiros</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+    <script src="js/utils.js"></script>
+</body>
+</html>
