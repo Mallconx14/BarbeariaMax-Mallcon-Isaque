@@ -1,0 +1,218 @@
+<!-- PASSO 4: CONFIRMAÇÃO - VERSÃO PREMIUM -->
+<div id="step4" class="step-content">
+    <div class="step-header-premium">
+        <h2>Confirme <span class="gold">seus detalhes</span></h2>
+        <p>Revise todas as informações antes de finalizar seu agendamento</p>
+    </div>
+    
+    <div class="confirmacao-premium">
+        <!-- Resumo do Agendamento -->
+        <div class="resumo-premium">
+            <div class="resumo-header-premium">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Resumo da sua experiência</h3>
+            </div>
+            
+            <div class="resumo-body-premium">
+                <!-- Serviços Selecionados -->
+                <div class="resumo-servicos">
+                    <h4>Serviços selecionados</h4>
+                    <div id="resumoServicosList" class="servicos-resumo-lista">
+                        <!-- Itens serão inseridos via JS -->
+                    </div>
+                </div>
+                
+                <!-- Informações do Agendamento -->
+                <div class="resumo-info-grid">
+                    <div class="info-card-premium">
+                        <i class="fas fa-user-tie"></i>
+                        <div class="info-content">
+                            <span class="info-label">Profissional</span>
+                            <span class="info-value" id="resumoProfissional">João Silva</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card-premium">
+                        <i class="fas fa-calendar-alt"></i>
+                        <div class="info-content">
+                            <span class="info-label">Data</span>
+                            <span class="info-value" id="resumoData">15 de Março, 2024</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card-premium">
+                        <i class="fas fa-clock"></i>
+                        <div class="info-content">
+                            <span class="info-label">Horário</span>
+                            <span class="info-value" id="resumoHorario">14:30</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card-premium">
+                        <i class="fas fa-hourglass-half"></i>
+                        <div class="info-content">
+                            <span class="info-label">Duração total</span>
+                            <span class="info-value" id="resumoDuracao">60 minutos</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Linha do Tempo -->
+                <div class="resumo-timeline">
+                    <h4>Linha do tempo</h4>
+                    <div class="timeline-items" id="timelineItems">
+                        <!-- Itens serão inseridos via JS -->
+                    </div>
+                </div>
+                
+                <!-- Total -->
+                <div class="resumo-total-premium">
+                    <span>Valor total</span>
+                    <span id="resumoTotal">R$ 145,00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dados do Cliente -->
+        <div class="dados-premium">
+            <div class="dados-header-premium">
+                <i class="fas fa-user-circle"></i>
+                <h3>Seus dados</h3>
+            </div>
+            
+            <div class="dados-body-premium">
+                <form id="formCliente">
+                    <!-- Nome Completo -->
+                    <div class="input-group-premium">
+                        <label for="nome_completo">
+                            <i class="fas fa-user"></i>
+                            Nome completo <span class="required">*</span>
+                        </label>
+                        <input type="text" id="nome_completo" placeholder="Como você prefere ser chamado" required>
+                    </div>
+
+                    <!-- Telefone com DDD -->
+                    <div class="input-group-premium">
+                        <label for="telefone_contato">
+                            <i class="fas fa-phone-alt"></i>
+                            Telefone (WhatsApp) <span class="required">*</span>
+                        </label>
+                        <input type="tel" id="telefone_contato" placeholder="(11) 99999-9999" required>
+                        <span class="input-helper">Enviaremos a confirmação por WhatsApp</span>
+                    </div>
+
+                    <!-- E-mail -->
+                    <div class="input-group-premium">
+                        <label for="email_contato">
+                            <i class="fas fa-envelope"></i>
+                            E-mail <span class="required">*</span>
+                        </label>
+                        <input type="email" id="email_contato" placeholder="seu@email.com" required>
+                    </div>
+
+                    <!-- Data de Nascimento -->
+                    <div class="input-group-premium">
+                        <label for="data_nascimento">
+                            <i class="fas fa-birthday-cake"></i>
+                            Data de nascimento
+                        </label>
+                        <input type="date" id="data_nascimento">
+                    </div>
+
+                    <!-- Observações -->
+                    <div class="input-group-premium">
+                        <label for="observacoes">
+                            <i class="fas fa-comment-dots"></i>
+                            Observações
+                        </label>
+                        <textarea id="observacoes" placeholder="Alguma preferência especial? Alergias? Conte para nós..."></textarea>
+                    </div>
+
+                    <!-- Preferência de Contato -->
+                    <div class="input-group-premium">
+                        <label>Prefere ser contactado por:</label>
+                        <div class="opcoes-contato">
+                            <label class="radio-opcao">
+                                <input type="radio" name="contato" value="whatsapp" checked>
+                                <span class="radio-custom"></span>
+                                <span>WhatsApp</span>
+                            </label>
+                            <label class="radio-opcao">
+                                <input type="radio" name="contato" value="telefone">
+                                <span class="radio-custom"></span>
+                                <span>Telefone</span>
+                            </label>
+                            <label class="radio-opcao">
+                                <input type="radio" name="contato" value="email">
+                                <span class="radio-custom"></span>
+                                <span>E-mail</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Como nos conheceu -->
+                    <div class="input-group-premium">
+                        <label for="conheceu">
+                            <i class="fas fa-search"></i>
+                            Como nos conheceu?
+                        </label>
+                        <select id="conheceu">
+                            <option value="">Selecione uma opção</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="facebook">Facebook</option>
+                            <option value="google">Google</option>
+                            <option value="indicacao">Indicação de amigo</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+
+                    <!-- Termos e Condições -->
+                    <div class="checkbox-group-premium">
+                        <label class="checkbox-premium">
+                            <input type="checkbox" id="termos" required>
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">
+                                Li e aceito os <a href="#">termos e condições</a> de agendamento e a <a href="#">política de privacidade</a>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="checkbox-group-premium">
+                        <label class="checkbox-premium">
+                            <input type="checkbox" id="newsletter" checked>
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">
+                                Quero receber promoções e novidades por e-mail/WhatsApp
+                            </span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Garantias -->
+    <div class="garantias-premium">
+        <div class="garantia-item">
+            <i class="fas fa-lock"></i>
+            <span>Dados protegidos</span>
+        </div>
+        <div class="garantia-item">
+            <i class="fas fa-clock"></i>
+            <span>Cancelamento gratuito com 2h de antecedência</span>
+        </div>
+        <div class="garantia-item">
+            <i class="fas fa-credit-card"></i>
+            <span>Pagamento na barbearia</span>
+        </div>
+    </div>
+
+    <div class="step-actions-premium">
+        <button class="btn-outline-premium" onclick="prevStep(4)">
+            <i class="fas fa-arrow-left"></i> Voltar e editar
+        </button>
+        <button class="btn-primary-premium" onclick="finalizarAgendamento()" id="btnFinalizar">
+            <i class="fas fa-check-circle"></i> Confirmar Agendamento
+        </button>
+    </div>
+</div>
