@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Agendamentos | Barbearia Vintage</title>
+    <link rel="stylesheet" href="./vintage-premium.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos específicos para o dashboard */
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .welcome-section h1 {
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 5px;
+        }
+
+        .welcome-section h1 span {
+            color: var(--primary-gold);
+            font-style: italic;
+        }
+
+        .welcome-section p {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        .btn-voltar {
+            background: transparent;
+            border: 1px solid var(--primary-gold);
+            color: var(--primary-gold);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition-base);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .btn-voltar:hover {
+            background: var(--primary-gold);
+            color: var(--secondary-wood);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(44, 30, 19, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: var(--transition-base);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-gold);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-gold);
+        }
+
+        .stat-info h3 {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-bottom: 5px;
+        }
+
+        .stat-info p {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .tabs-container {
+            background: rgba(44, 30, 19, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .tabs-header {
+            display: flex;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-gray);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-btn i {
+            color: var(--primary-gold);
+        }
+
+        .tab-btn:hover {
+            color: var(--white);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .tab-btn.active {
+            color: var(--primary-gold);
+            border-bottom-color: var(--primary-gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 30px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .agendamentos-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .agendamento-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 25px;
+            align-items: center;
+            transition: var(--transition-base);
+        }
+
+        .agendamento-card:hover {
+            border-color: var(--primary-gold);
+            transform: translateX(5px);
+        }
+
+        .agendamento-status {
+            width: 120px;
+            text-align: center;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-badge.confirmado {
+            background: rgba(46, 125, 50, 0.15);
+            color: #4CAF50;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .status-badge.realizado {
+            background: rgba(33, 150, 243, 0.15);
+            color: #2196F3;
+            border: 1px solid rgba(33, 150, 243, 0.3);
+        }
+
+        .status-badge.cancelado {
+            background: rgba(198, 40, 40, 0.15);
+            color: #f44336;
+            border: 1px solid rgba(244, 67, 54, 0.3);
+        }
+
+        .status-badge.pendente {
+            background: rgba(255, 152, 0, 0.15);
+            color: #FF9800;
+            border: 1px solid rgba(255, 152, 0, 0.3);
+        }
+
+        .agendamento-info h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .agendamento-info p {
+            color: var(--text-gray);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .agendamento-info i {
+            color: var(--primary-gold);
+            width: 20px;
+        }
+
+        .agendamento-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-small {
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-base);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-small-outline {
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--text-light);
+        }
+
+        .btn-small-outline:hover {
+            border-color: var(--primary-gold);
+            color: var(--primary-gold);
+        }
+
+        .btn-small-primary {
+            background: var(--primary-gold);
+            color: var(--secondary-wood);
+        }
+
+        .btn-small-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .btn-small-danger {
+            background: transparent;
+            border: 1px solid #f44336;
+            color: #f44336;
+        }
+
+        .btn-small-danger:hover {
+            background: #f44336;
+            color: var(--white);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .empty-state h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            color: var(--text-gray);
+            margin-bottom: 30px;
+        }
+
+        .btn-primary-premium {
+            padding: 15px 35px;
+            border-radius: var(--border-radius-full);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition-base);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            background: var(--gradient-gold);
+            color: var(--secondary-wood);
+            text-decoration: none;
+        }
+
+        .btn-primary-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        @media (max-width: 992px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .agendamento-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .agendamento-status {
+                width: 100%;
+            }
+
+            .agendamento-info p {
+                justify-content: center;
+            }
+
+            .agendamento-actions {
+                justify-content: center;
+            }
+
+            .tabs-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Pattern -->
+    <div class="pattern-overlay"></div>
+    
+    <!-- Header Premium -->
+    <header class="header-premium">
+        <nav class="nav-premium container">
+            <div class="logo-premium">
+                <img src="assets/logo-gold.svg" alt="Barbearia Vintage">
+                <span>Barbearia <em>Vintage</em></span>
+            </div>
+            
+            <button class="menu-toggle-premium" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-menu-premium">
+                <li><a href="index.html#home">Início</a></li>
+                <li><a href="index.html#servicos">Serviços</a></li>
+                <li><a href="index.html#profissionais">Profissionais</a></li>
+                <li><a href="index.html#sobre">Sobre</a></li>
+                <li><a href="index.html#contato">Contato</a></li>
+                <li><a href="login.html" class="btn-login-premium active"><i class="fas fa-user"></i> Minha Conta</a></li>
+                <li><a href="agendamento.html" class="btn-agendar-premium"><i class="fas fa-calendar"></i> Agendar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-agendamento" style="min-height: 40vh;">
+            <div class="hero-vignette"></div>
+            <div class="container">
+                <div class="hero-content-premium">
+                    <div class="hero-badge">
+                        <span class="badge-line"></span>
+                        <span class="badge-text">Área do Cliente</span>
+                        <span class="badge-line"></span>
+                    </div>
+                    <h1 class="hero-title">
+                        Meus <span class="gold-text">Agendamentos</span>
+                    </h1>
+                    <p class="hero-description">
+                        Acompanhe todos os seus agendamentos, histórico de serviços e muito mais
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="agendamento-premium" style="padding-top: 0;">
+            <div class="dashboard-container">
+                <!-- Header do Dashboard -->
+                <div class="dashboard-header">
+                    <div class="welcome-section">
+                        <h1>Olá, <span>Ricardo Mendes</span></h1>
+                        <p>Bem-vindo de volta à Barbearia Vintage</p>
+                    </div>
+                    <a href="index.html" class="btn-voltar">
+                        <i class="fas fa-arrow-left"></i> Voltar para Home
+                    </a>
+                </div>
+
+                <!-- Cards de Estatísticas -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Agendamentos</h3>
+                            <p>12</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Próximo</h3>
+                            <p>Hoje 17:00</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Fidelidade</h3>
+                            <p>8 visitas</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Próxima meta</h3>
+                            <p>2 visitas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabs de Agendamentos -->
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="showTab('proximos')">
+                            <i class="fas fa-clock"></i> Próximos
+                        </button>
+                        <button class="tab-btn" onclick="showTab('anteriores')">
+                            <i class="fas fa-history"></i> Histórico
+                        </button>
+                        <button class="tab-btn" onclick="showTab('cancelados')">
+                            <i class="fas fa-times-circle"></i> Cancelados
+                        </button>
+                    </div>
+
+                    <!-- Tab: Próximos Agendamentos -->
+                    <div id="tab-proximos" class="tab-content active">
+                        <div class="agendamentos-list">
+                            <!-- Agendamento Confirmado - HOJE -->
+                            <div class="agendamento-card">
+                                <div class="agendamento-status">
+                                    <span class="status-badge confirmado">Confirmado</span>
+                                </div>
+                                <div class="agendamento-info">
+                                    <h3>Corte Clássico + Barba Completa</h3>
+                                    <p><i class="fas fa-calendar"></i> Hoje, 25 de fevereiro de 2026</p>
+                                    <p><i class="fas fa-clock"></i> 17:00</p>
+                                    <p><i class="fas fa-user-tie"></i> Profissional: Pedro Santos</p>
+                                    <p><i class="fas fa-map-marker-alt"></i> Unidade Centro</p>
+                                </div>
+                                <div class="agendamento-actions">
+                                    <button class="btn-small btn-small-outline" onclick="window.location.href='agendamento.html'">
+                                        <i class="fas fa-edit"></i> Reagendar
+                                    </button>
+                                    <button class="btn-small btn-small-danger" onclick="cancelarAgendamento(this)">
+                                        <i class="fas fa-times"></i> Cancelar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Agendamento Confirmado - Próxima Semana -->
+                            <div class="agendamento-card">
+                                <div class="agendamento-status">
+                                    <span class="status-badge confirmado">Confirmado</span>
+                                </div>
+                                <div class="agendamento-info">
+                                    <h3>Pigmentação + Sobrancelha</h3>
+                                    <p><i class="fas fa-calendar"></i> 05 de março de 2026</p>
+                                    <p><i class="fas fa-clock"></i> 15:30</p>
+                                    <p><i class="fas fa-user-tie"></i> Profissional: Carlos Oliveira</p>
+                                    <p><i class="fas fa-map-marker-alt"></i> Unidade Centro</p>
+                                </div>
+                                <div class="agendamento-actions">
+                                    <button class="btn-small btn-small-outline">
+                                        <i class="fas fa-edit"></i> Reagendar
+                                    </button>
+                                    <button class="btn-small btn-small-danger" onclick="cancelarAgendamento(this)">
+                                        <i class="fas fa-times"></i> Cancelar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Histórico de Agendamentos -->
+                    <div id="tab-anteriores" class="tab-content">
+                        <div class="agendamentos-list">
+                            <!-- Agendamento Realizado -->
+                            <div class="agendamento-card">
+                                <div class="agendamento-status">
+                                    <span class="status-badge realizado">Realizado</span>
+                                </div>
+                                <div class="agendamento-info">
+                                    <h3>Corte Clássico</h3>
+                                    <p><i class="fas fa-calendar"></i> 18 de fevereiro de 2026</p>
+                                    <p><i class="fas fa-clock"></i> 14:00</p>
+                                    <p><i class="fas fa-user-tie"></i> Profissional: João Silva</p>
+                                    <p><i class="fas fa-star" style="color: var(--primary-gold);"></i> Avaliação: 5 estrelas</p>
+                                </div>
+                                <div class="agendamento-actions">
+                                    <button class="btn-small btn-small-outline" onclick="avaliarAgendamento()">
+                                        <i class="fas fa-star"></i> Avaliar
+                                    </button>
+                                    <button class="btn-small btn-small-primary" onclick="window.location.href='agendamento.html'">
+                                        <i class="fas fa-redo"></i> Repetir
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Agendamento Realizado -->
+                            <div class="agendamento-card">
+                                <div class="agendamento-status">
+                                    <span class="status-badge realizado">Realizado</span>
+                                </div>
+                                <div class="agendamento-info">
+                                    <h3>Barba Completa + Sobrancelha</h3>
+                                    <p><i class="fas fa-calendar"></i> 10 de fevereiro de 2026</p>
+                                    <p><i class="fas fa-clock"></i> 11:00</p>
+                                    <p><i class="fas fa-user-tie"></i> Profissional: Pedro Santos</p>
+                                    <p><i class="fas fa-star" style="color: var(--primary-gold);"></i> Avaliação: 5 estrelas</p>
+                                </div>
+                                <div class="agendamento-actions">
+                                    <button class="btn-small btn-small-outline" onclick="avaliarAgendamento()">
+                                        <i class="fas fa-star"></i> Avaliar
+                                    </button>
+                                    <button class="btn-small btn-small-primary" onclick="window.location.href='agendamento.html'">
+                                        <i class="fas fa-redo"></i> Repetir
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Agendamento Realizado -->
+                            <div class="agendamento-card">
+                                <div class="agendamento-status">
+                                    <span class="status-badge realizado">Realizado</span>
+                                </div>
+                                <div class="agendamento-info">
+                                    <h3>Corte Clássico + Barba</h3>
+                                    <p><i class="fas fa-calendar"></i> 03 de fevereiro de 2026</p>
+                                    <p><i class="fas fa-clock"></i> 16:30</p>
+                                    <p><i class="fas fa-user-tie"></i> Profissional: João Silva</p>
+                                    <p><i class="fas fa-star" style="color: var(--primary-gold);"></i> Avaliação: 4 estrelas</p>
+                                </div>
+                                <div class="agendamento-actions">
+                                    <button class="btn-small btn-small-outline" onclick="avaliarAgendamento()">
+                                        <i class="fas fa-star"></i> Avaliar
+                                    </button>
+                                    <button class="btn-small btn-small-primary" onclick="window.location.href='agendamento.html'">
+                                        <i class="fas fa-redo"></i> Repetir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Cancelados -->
+                    <div id="tab-cancelados" class="tab-content">
+                        <div class="agendamentos-list">
+                            <!-- Agendamento Cancelado -->
+                            <div class="agendamento-card">
+                                <div class="agendamento-status">
+                                    <span class="status-badge cancelado">Cancelado</span>
+                                </div>
+                                <div class="agendamento-info">
+                                    <h3>Corte + Barba + Pigmentação</h3>
+                                    <p><i class="fas fa-calendar"></i> 20 de fevereiro de 2026</p>
+                                    <p><i class="fas fa-clock"></i> 19:00</p>
+                                    <p><i class="fas fa-user-tie"></i> Profissional: Carlos Oliveira</p>
+                                    <p><i class="fas fa-info-circle" style="color: var(--text-gray);"></i> Cancelado por: Cliente</p>
+                                </div>
+                                <div class="agendamento-actions">
+                                    <button class="btn-small btn-small-primary" onclick="window.location.href='agendamento.html'">
+                                        <i class="fas fa-redo"></i> Reagendar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Agendamento Cancelado -->
+                            <div class="agendamento-card">
+                                <div class="agendamento-status">
+                                    <span class="status-badge cancelado">Cancelado</span>
+                                </div>
+                                <div class="agendamento-info">
+                                    <h3>Barba Completa</h3>
+                                    <p><i class="fas fa-calendar"></i> 15 de fevereiro de 2026</p>
+                                    <p><i class="fas fa-clock"></i> 10:00</p>
+                                    <p><i class="fas fa-user-tie"></i> Profissional: Pedro Santos</p>
+                                    <p><i class="fas fa-info-circle" style="color: var(--text-gray);"></i> Cancelado por: Barbearia</p>
+                                </div>
+                                <div class="agendamento-actions">
+                                    <button class="btn-small btn-small-primary" onclick="window.location.href='agendamento.html'">
+                                        <i class="fas fa-redo"></i> Reagendar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mensagem de Agendamento Confirmado (Modal) -->
+                <div id="successModal" class="modal-premium" style="display: none;">
+                    <div class="modal-content-premium">
+                        <div class="modal-icon-premium">
+                            <div class="icon-circle">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        
+                        <h2>Agendamento Confirmado!</h2>
+                        <p class="modal-subtitle">Sua experiência na Barbearia Vintage está reservada</p>
+                        
+                        <div class="modal-detalhes-premium">
+                            <div class="modal-detalhe-item">
+                                <i class="fas fa-calendar"></i>
+                                <div>
+                                    <span class="detalhe-label">Data</span>
+                                    <span class="detalhe-value" id="modalData">25 de fevereiro de 2026</span>
+                                </div>
+                            </div>
+                            <div class="modal-detalhe-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <span class="detalhe-label">Horário</span>
+                                    <span class="detalhe-value" id="modalHorario">17:00</span>
+                                </div>
+                            </div>
+                            <div class="modal-detalhe-item">
+                                <i class="fas fa-user-tie"></i>
+                                <div>
+                                    <span class="detalhe-label">Profissional</span>
+                                    <span class="detalhe-value" id="modalProfissional">Pedro Santos</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="modal-message">
+                            <i class="fas fa-envelope-open-text"></i>
+                            <p>Enviamos um e-mail com todos os detalhes e lembretes</p>
+                        </div>
+                        
+                        <div class="modal-actions-premium">
+                            <a href="index.html" class="btn-outline-premium">
+                                <i class="fas fa-home"></i> Página Inicial
+                            </a>
+                            <a href="dashboard-cliente.html" class="btn-primary-premium">
+                                <i class="fas fa-calendar-alt"></i> Meus Agendamentos
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Toast Notification -->
+                <div id="toast" class="toast-premium"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer-premium">
+        <div class="container">
+            <div class="footer-content-premium">
+                <div class="footer-info-premium">
+                    <div class="logo-premium">
+                        <img src="assets/logo-gold.svg" alt="Barbearia Vintage">
+                        <span>Barbearia <em>Vintage</em></span>
+                    </div>
+                    <p>Tradição, elegância e estilo em cada detalhe</p>
+                    <div class="social-links-premium">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links-premium">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html#home">Início</a></li>
+                        <li><a href="index.html#servicos">Serviços</a></li>
+                        <li><a href="index.html#profissionais">Mestres Barbeiros</a></li>
+                        <li><a href="index.html#sobre">Nosso Ateliê</a></li>
+                        <li><a href="login.html">Área do Cliente</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contato-premium">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Rua das Barbearias, 123 - Centro</li>
+                        <li><i class="fas fa-phone"></i> (11) 99999-9999</li>
+                        <li><i class="fas fa-envelope"></i> contato@barbeariavintage.com</li>
+                        <li><i class="fas fa-clock"></i> Seg-Sáb: 9h às 20h</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom-premium">
+                <p>&copy; 2024 Barbearia Vintage. Todos os direitos reservados.</p>
+                <p>Desenvolvido com <i class="fas fa-heart"></i> para cavalheiros distintos</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Função para mostrar as abas
+        function showTab(tabName) {
+            // Esconder todos os conteúdos
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remover active de todos os botões
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Mostrar a aba selecionada
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+            
+            // Adicionar active ao botão clicado
+            event.target.classList.add('active');
+        }
+
+        // Função para cancelar agendamento
+        function cancelarAgendamento(btn) {
+            if (confirm('Tem certeza que deseja cancelar este agendamento?')) {
+                const card = btn.closest('.agendamento-card');
+                const status = card.querySelector('.status-badge');
+                
+                status.className = 'status-badge cancelado';
+                status.textContent = 'Cancelado';
+                
+                const actions = card.querySelector('.agendamento-actions');
+                actions.innerHTML = `
+                    <button class="btn-small btn-small-primary" onclick="window.location.href='agendamento.html'">
+                        <i class="fas fa-redo"></i> Reagendar
+                    </button>
+                `;
+                
+                showToast('Agendamento cancelado com sucesso', 'success');
+            }
+        }
+
+        // Função para avaliar agendamento
+        function avaliarAgendamento() {
+            alert('Funcionalidade de avaliação será implementada em breve!');
+        }
+
+        // Função para mostrar toast
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast-premium show toast-${type}`;
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Menu toggle
+        document.getElementById('menuToggle')?.addEventListener('click', function() {
+            document.querySelector('.nav-menu-premium').classList.toggle('active');
+        });
+
+        // Simular que acabou de fazer um agendamento (mostrar modal)
+        window.addEventListener('load', function() {
+            // Verificar se veio da página de agendamento
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('agendamento') === 'confirmado') {
+                document.getElementById('successModal').style.display = 'flex';
+            }
+        });
+
+        // Fechar modal ao clicar fora
+        window.onclick = function(event) {
+            const modal = document.getElementById('successModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
