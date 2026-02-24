@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamento | Barbearia Vintage • Experiência Premium</title>
     <link rel="stylesheet" href="./vintage-premium.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
     <!-- Background Pattern -->
     <div class="pattern-overlay"></div>
-    
+
     <!-- Header Premium -->
     <header class="header-premium">
         <nav class="nav-premium container">
@@ -20,7 +24,7 @@
                 <img src="assets/logo-gold.svg" alt="Barbearia Vintage">
                 <span>Barbearia <em>Vintage</em></span>
             </div>
-            
+
             <button class="menu-toggle-premium" id="menuToggle">
                 <span></span>
                 <span></span>
@@ -34,7 +38,8 @@
                 <li><a href="index.html#sobre">Sobre</a></li>
                 <li><a href="index.html#contato">Contato</a></li>
                 <li><a href="login.html" class="btn-login-premium"><i class="fas fa-user"></i> Acessar</a></li>
-                <li><a href="agendamento.html" class="btn-agendar-premium active"><i class="fas fa-calendar"></i> Agendar</a></li>
+                <li><a href="agendamento.html" class="btn-agendar-premium active"><i class="fas fa-calendar"></i>
+                        Agendar</a></li>
             </ul>
         </nav>
     </header>
@@ -51,14 +56,14 @@
                         <span class="badge-line"></span>
                     </div>
                     <h1 class="hero-title">
-                                Agende seu<br>
+                        Agende seu<br>
                         <span class="title-em">Momento de<span class="gold-text"> Elegância</span></span>
                     </h1>
                     <p class="hero-description">
-                        Cada visita é uma experiência única. Escolha seus serviços e prepare-se<br class="hide-mobile"> 
+                        Cada visita é uma experiência única. Escolha seus serviços e prepare-se<br class="hide-mobile">
                         para viver o verdadeiro ritual da barbearia clássica.
                     </p>
-                    
+
                     <div class="hero-features">
                         <div class="feature-item">
                             <i class="fas fa-clock"></i>
@@ -75,7 +80,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Elementos decorativos -->
             <div class="hero-decoration decoration-1"></div>
             <div class="hero-decoration decoration-2"></div>
@@ -90,7 +95,7 @@
                     <div class="progress-track-premium">
                         <div class="progress-fill-premium" id="progressFill" style="width: 25%"></div>
                     </div>
-                    
+
                     <div class="steps-premium">
                         <div class="step-item active" data-step="1">
                             <div class="step-marker">
@@ -102,7 +107,7 @@
                                 <span class="step-desc">Serviços</span>
                             </div>
                         </div>
-                        
+
                         <div class="step-item" data-step="2">
                             <div class="step-marker">
                                 <span class="step-number">02</span>
@@ -113,7 +118,7 @@
                                 <span class="step-desc">Mestre Barbeiro</span>
                             </div>
                         </div>
-                        
+
                         <div class="step-item" data-step="3">
                             <div class="step-marker">
                                 <span class="step-number">03</span>
@@ -124,7 +129,7 @@
                                 <span class="step-desc">Data & Horário</span>
                             </div>
                         </div>
-                        
+
                         <div class="step-item" data-step="4">
                             <div class="step-marker">
                                 <span class="step-number">04</span>
@@ -140,14 +145,14 @@
 
                 <!-- Card Principal de Agendamento Luxo -->
                 <div class="agendamento-card-premium">
-                    
+
                     <!-- PASSO 1: SERVIÇOS -->
                     <div id="step1" class="step-content active">
                         <div class="step-header-premium">
                             <h2>Serviços <span class="gold">Artesanais</span></h2>
                             <p>Cada serviço é executado com técnicas tradicionais e produtos premium</p>
                         </div>
-                        
+
                         <div class="servicos-grid-premium">
                             <!-- Corte Clássico -->
                             <div class="servico-card-premium" data-servico="corte" data-preco="45" data-duracao="30">
@@ -157,14 +162,15 @@
                                         <div class="servico-tag">Mais pedido</div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="servico-body">
                                     <div class="servico-icon">
                                         <i class="fas fa-cut"></i>
                                     </div>
                                     <h3>Corte Clássico</h3>
-                                    <p>Tradição e estilo com tesoura e máquina, finalizado com produtos da melhor qualidade.</p>
-                                    
+                                    <p>Tradição e estilo com tesoura e máquina, finalizado com produtos da melhor
+                                        qualidade.</p>
+
                                     <div class="servico-details">
                                         <div class="detail-item">
                                             <i class="far fa-clock"></i>
@@ -176,7 +182,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="servico-select-premium">
                                     <input type="checkbox" id="servico-corte" class="servico-check-premium">
                                     <label for="servico-corte" class="select-label">
@@ -192,14 +198,15 @@
                                     <img src="assets/service-beard.jpg" alt="Barba Completa">
                                     <div class="servico-overlay"></div>
                                 </div>
-                                
+
                                 <div class="servico-body">
                                     <div class="servico-icon">
                                         <i class="fas fa-razor"></i>
                                     </div>
                                     <h3>Barba Completa</h3>
-                                    <p>Experiência completa com toalhas quentes, navalha e produtos especiais para sua pele.</p>
-                                    
+                                    <p>Experiência completa com toalhas quentes, navalha e produtos especiais para sua
+                                        pele.</p>
+
                                     <div class="servico-details">
                                         <div class="detail-item">
                                             <i class="far fa-clock"></i>
@@ -211,7 +218,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="servico-select-premium">
                                     <input type="checkbox" id="servico-barba" class="servico-check-premium">
                                     <label for="servico-barba" class="select-label">
@@ -222,21 +229,23 @@
                             </div>
 
                             <!-- Corte + Barba (Combo) -->
-                            <div class="servico-card-premium featured" data-servico="corte-barba" data-preco="70" data-duracao="60">
+                            <div class="servico-card-premium featured" data-servico="corte-barba" data-preco="70"
+                                data-duracao="60">
                                 <div class="servico-image">
                                     <img src="assets/service-combo.jpg" alt="Corte + Barba">
                                     <div class="servico-overlay">
                                         <div class="servico-tag">Melhor valor</div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="servico-body">
                                     <div class="servico-icon">
                                         <i class="fas fa-crown"></i>
                                     </div>
                                     <h3>Corte + Barba <span class="combo-badge">Combo</span></h3>
-                                    <p>O pacote completo para o cavalheiro moderno. Transformação total com valor especial.</p>
-                                    
+                                    <p>O pacote completo para o cavalheiro moderno. Transformação total com valor
+                                        especial.</p>
+
                                     <div class="servico-details">
                                         <div class="detail-item">
                                             <i class="far fa-clock"></i>
@@ -248,7 +257,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="servico-select-premium">
                                     <input type="checkbox" id="servico-corte-barba" class="servico-check-premium">
                                     <label for="servico-corte-barba" class="select-label">
@@ -259,19 +268,20 @@
                             </div>
 
                             <!-- Sobrancelha -->
-                            <div class="servico-card-premium" data-servico="sobrancelha" data-preco="20" data-duracao="15">
+                            <div class="servico-card-premium" data-servico="sobrancelha" data-preco="20"
+                                data-duracao="15">
                                 <div class="servico-image">
                                     <img src="assets/service-eyebrow.jpg" alt="Sobrancelha">
                                     <div class="servico-overlay"></div>
                                 </div>
-                                
+
                                 <div class="servico-body">
                                     <div class="servico-icon">
                                         <i class="fas fa-eye"></i>
                                     </div>
                                     <h3>Design de Sobrancelha</h3>
                                     <p>Modelagem precisa que valoriza seu olhar, feita com cera ou pinça.</p>
-                                    
+
                                     <div class="servico-details">
                                         <div class="detail-item">
                                             <i class="far fa-clock"></i>
@@ -283,7 +293,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="servico-select-premium">
                                     <input type="checkbox" id="servico-sobrancelha" class="servico-check-premium">
                                     <label for="servico-sobrancelha" class="select-label">
@@ -294,19 +304,21 @@
                             </div>
 
                             <!-- Pigmentação -->
-                            <div class="servico-card-premium" data-servico="pigmentacao" data-preco="80" data-duracao="45">
+                            <div class="servico-card-premium" data-servico="pigmentacao" data-preco="80"
+                                data-duracao="45">
                                 <div class="servico-image">
                                     <img src="assets/service-pigmentation.jpg" alt="Pigmentação">
                                     <div class="servico-overlay"></div>
                                 </div>
-                                
+
                                 <div class="servico-body">
                                     <div class="servico-icon">
                                         <i class="fas fa-pen-fancy"></i>
                                     </div>
                                     <h3>Pigmentação</h3>
-                                    <p>Técnica especial para preencher falhas na barba e bigode com resultado natural.</p>
-                                    
+                                    <p>Técnica especial para preencher falhas na barba e bigode com resultado natural.
+                                    </p>
+
                                     <div class="servico-details">
                                         <div class="detail-item">
                                             <i class="far fa-clock"></i>
@@ -318,7 +330,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="servico-select-premium">
                                     <input type="checkbox" id="servico-pigmentacao" class="servico-check-premium">
                                     <label for="servico-pigmentacao" class="select-label">
@@ -355,7 +367,7 @@
                             <h2>Nossos <span class="gold">Mestres</span></h2>
                             <p>Artistas da navalha dedicados a realçar sua elegância</p>
                         </div>
-                        
+
                         <div class="profissionais-grid-premium">
                             <!-- João Silva -->
                             <div class="profissional-card-premium" data-profissional="joao">
@@ -369,12 +381,12 @@
                                         <span>12 anos</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="profissional-body">
                                     <h3>João Silva</h3>
                                     <p class="profissional-title">Mestre Barbeiro</p>
                                     <p class="profissional-specialty">Especialista em Cortes Clássicos</p>
-                                    
+
                                     <div class="profissional-rating">
                                         <div class="stars">
                                             <i class="fas fa-star"></i>
@@ -385,13 +397,13 @@
                                         </div>
                                         <span class="rating-count">128 avaliações</span>
                                     </div>
-                                    
+
                                     <div class="profissional-badges">
                                         <span class="badge"><i class="fas fa-trophy"></i> Top 1</span>
                                         <span class="badge"><i class="fas fa-medal"></i> Expert</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="profissional-select-premium">
                                     <input type="radio" name="profissional" id="prof-joao" value="joao">
                                     <label for="prof-joao" class="select-radio">
@@ -413,12 +425,12 @@
                                         <span>8 anos</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="profissional-body">
                                     <h3>Pedro Santos</h3>
                                     <p class="profissional-title">Barbeiro Senior</p>
                                     <p class="profissional-specialty">Especialista em Barba e Navalha</p>
-                                    
+
                                     <div class="profissional-rating">
                                         <div class="stars">
                                             <i class="fas fa-star"></i>
@@ -429,12 +441,12 @@
                                         </div>
                                         <span class="rating-count">95 avaliações</span>
                                     </div>
-                                    
+
                                     <div class="profissional-badges">
                                         <span class="badge"><i class="fas fa-razor"></i> Navalha</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="profissional-select-premium">
                                     <input type="radio" name="profissional" id="prof-pedro" value="pedro">
                                     <label for="prof-pedro" class="select-radio">
@@ -456,12 +468,12 @@
                                         <span>15 anos</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="profissional-body">
                                     <h3>Carlos Oliveira</h3>
                                     <p class="profissional-title">Mestre em Pigmentação</p>
                                     <p class="profissional-specialty">Especialista em Pigmentação e Acabamento</p>
-                                    
+
                                     <div class="profissional-rating">
                                         <div class="stars">
                                             <i class="fas fa-star"></i>
@@ -472,13 +484,13 @@
                                         </div>
                                         <span class="rating-count">156 avaliações</span>
                                     </div>
-                                    
+
                                     <div class="profissional-badges">
                                         <span class="badge"><i class="fas fa-crown"></i> Mestre</span>
                                         <span class="badge"><i class="fas fa-palette"></i> Pigmentação</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="profissional-select-premium">
                                     <input type="radio" name="profissional" id="prof-carlos" value="carlos">
                                     <label for="prof-carlos" class="select-radio">
@@ -493,18 +505,19 @@
                                 <div class="profissional-image qualquer-image">
                                     <i class="fas fa-users"></i>
                                 </div>
-                                
+
                                 <div class="profissional-body">
                                     <h3>Qualquer Profissional</h3>
                                     <p class="profissional-title">Melhor disponibilidade</p>
-                                    <p class="profissional-specialty">Deixe que escolhamos o melhor profissional disponível para você</p>
-                                    
+                                    <p class="profissional-specialty">Deixe que escolhamos o melhor profissional
+                                        disponível para você</p>
+
                                     <div class="profissional-features">
                                         <span><i class="fas fa-clock"></i> Agendamento mais rápido</span>
                                         <span><i class="fas fa-star"></i> Garantia de qualidade</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="profissional-select-premium">
                                     <input type="radio" name="profissional" id="prof-qualquer" value="qualquer" checked>
                                     <label for="prof-qualquer" class="select-radio">
@@ -531,7 +544,7 @@
                             <h2>Escolha <span class="gold">Data & Horário</span></h2>
                             <p>Selecione o melhor momento para sua visita</p>
                         </div>
-                        
+
                         <div class="datetime-premium">
                             <!-- Calendário -->
                             <div class="calendario-premium">
@@ -556,10 +569,11 @@
                                 </div>
 
                                 <div class="calendario-dias-premium" id="calendarioDias"></div>
-                                
+
                                 <div class="calendario-legenda">
                                     <span class="legenda-item"><span class="dot disponivel"></span> Disponível</span>
-                                    <span class="legenda-item"><span class="dot indisponivel"></span> Indisponível</span>
+                                    <span class="legenda-item"><span class="dot indisponivel"></span>
+                                        Indisponível</span>
                                     <span class="legenda-item"><span class="dot hoje"></span> Hoje</span>
                                 </div>
                             </div>
@@ -568,7 +582,7 @@
                             <div class="horarios-premium">
                                 <h4>Horários disponíveis</h4>
                                 <div class="horarios-grid-premium" id="horariosGrid"></div>
-                                
+
                                 <div class="horarios-info">
                                     <i class="fas fa-info-circle"></i>
                                     <span>Os horários são atualizados em tempo real</span>
@@ -592,7 +606,7 @@
                             <h2>Confirme <span class="gold">seus detalhes</span></h2>
                             <p>Revise todas as informações antes de finalizar</p>
                         </div>
-                        
+
                         <div class="confirmacao-premium">
                             <!-- Resumo do Agendamento -->
                             <div class="resumo-premium">
@@ -600,14 +614,14 @@
                                     <i class="fas fa-calendar-check"></i>
                                     <h3>Resumo da sua experiência</h3>
                                 </div>
-                                
+
                                 <div class="resumo-body-premium">
                                     <!-- Serviços -->
                                     <div class="resumo-servicos">
                                         <h4>Serviços selecionados</h4>
                                         <div id="resumoServicosList" class="servicos-resumo-lista"></div>
                                     </div>
-                                    
+
                                     <!-- Informações -->
                                     <div class="resumo-info-grid">
                                         <div class="info-card-premium">
@@ -617,7 +631,7 @@
                                                 <span class="info-value" id="resumoProfissional">-</span>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="info-card-premium">
                                             <i class="fas fa-calendar-alt"></i>
                                             <div class="info-content">
@@ -625,7 +639,7 @@
                                                 <span class="info-value" id="resumoData">-</span>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="info-card-premium">
                                             <i class="fas fa-clock"></i>
                                             <div class="info-content">
@@ -633,7 +647,7 @@
                                                 <span class="info-value" id="resumoHorario">-</span>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="info-card-premium">
                                             <i class="fas fa-hourglass-half"></i>
                                             <div class="info-content">
@@ -642,7 +656,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <!-- Total -->
                                     <div class="resumo-total-premium">
                                         <span>Valor total</span>
@@ -657,14 +671,15 @@
                                     <i class="fas fa-user-circle"></i>
                                     <h3>Seus dados</h3>
                                 </div>
-                                
+
                                 <div class="dados-body-premium">
                                     <div class="input-group-premium">
                                         <label for="nome_completo">
                                             <i class="fas fa-user"></i>
                                             Nome completo <span class="required">*</span>
                                         </label>
-                                        <input type="text" id="nome_completo" placeholder="Como você prefere ser chamado">
+                                        <input type="text" id="nome_completo"
+                                            placeholder="Como você prefere ser chamado">
                                     </div>
 
                                     <div class="input-group-premium">
@@ -688,7 +703,8 @@
                                             <i class="fas fa-comment-dots"></i>
                                             Observações
                                         </label>
-                                        <textarea id="observacoes" placeholder="Alguma preferência especial? Alergias? Conte para nós..."></textarea>
+                                        <textarea id="observacoes"
+                                            placeholder="Alguma preferência especial? Alergias? Conte para nós..."></textarea>
                                     </div>
 
                                     <div class="checkbox-group-premium">
@@ -726,10 +742,10 @@
                     <i class="fas fa-check"></i>
                 </div>
             </div>
-            
+
             <h2>Agendamento Confirmado!</h2>
             <p class="modal-subtitle">Sua experiência na Barbearia Vintage está reservada</p>
-            
+
             <div class="modal-detalhes-premium">
                 <div class="modal-detalhe-item">
                     <i class="fas fa-calendar"></i>
@@ -753,12 +769,12 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="modal-message">
                 <i class="fas fa-envelope-open-text"></i>
                 <p>Enviamos um e-mail com todos os detalhes e lembretes</p>
             </div>
-            
+
             <div class="modal-actions-premium">
                 <button class="btn-outline-premium" onclick="window.location.href='index.html'">
                     <i class="fas fa-home"></i> Página Inicial
@@ -828,19 +844,19 @@
         let selectedDate = null;
         let selectedTime = null;
         let currentMonth = new Date();
-    
+
         // Dados simulados
         const unavailableDates = ['2024-03-15', '2024-03-20', '2024-03-25'];
         const unavailableTimes = ['12:00', '12:30', '13:00', '19:00', '19:30'];
-    
+
         // Inicialização
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             updateCalendar();
             setupEventListeners();
             generateTimeSlots();
             updateQuickSummary();
             updateProgressBar(1);
-            
+
             // Inicializar selectedProfessional com o valor padrão
             const qualqerRadio = document.getElementById('prof-qualquer');
             if (qualqerRadio) {
@@ -848,11 +864,11 @@
                 selectedProfessional = 'qualquer';
             }
         });
-    
+
         function setupEventListeners() {
             // Checkboxes de serviços
             document.querySelectorAll('.servico-check-premium').forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
+                checkbox.addEventListener('change', function () {
                     const card = this.closest('.servico-card-premium');
                     if (this.checked) {
                         card.classList.add('selected');
@@ -862,10 +878,10 @@
                     updateQuickSummary();
                 });
             });
-    
+
             // Radio buttons de profissionais
             document.querySelectorAll('input[name="profissional"]').forEach(radio => {
-                radio.addEventListener('change', function() {
+                radio.addEventListener('change', function () {
                     selectedProfessional = this.value;
                     // Remover selected de todos os cards
                     document.querySelectorAll('.profissional-card-premium').forEach(card => {
@@ -875,19 +891,19 @@
                     this.closest('.profissional-card-premium').classList.add('selected');
                 });
             });
-    
+
             // Menu toggle
-            document.getElementById('menuToggle')?.addEventListener('click', function() {
+            document.getElementById('menuToggle')?.addEventListener('click', function () {
                 document.querySelector('.nav-menu-premium').classList.toggle('active');
             });
         }
-    
+
         function updateProgressBar(step) {
             const progressFill = document.getElementById('progressFill');
             const steps = document.querySelectorAll('.step-item');
-            
+
             progressFill.style.width = `${step * 25}%`;
-            
+
             steps.forEach((s, index) => {
                 if (index < step) {
                     s.classList.add('active');
@@ -896,20 +912,20 @@
                 }
             });
         }
-    
+
         function nextStep(step) {
             document.getElementById(`step${step}`).classList.remove('active');
             document.getElementById(`step${step + 1}`).classList.add('active');
             currentStep = step + 1;
             updateProgressBar(currentStep);
-            
+
             if (currentStep === 4) {
                 updateResumo();
             }
-            
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-    
+
         function prevStep(step) {
             document.getElementById(`step${step}`).classList.remove('active');
             document.getElementById(`step${step - 1}`).classList.add('active');
@@ -917,7 +933,7 @@
             updateProgressBar(currentStep);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-    
+
         // PASSO 1: VALIDAÇÃO DE SERVIÇOS
         function validateStep1() {
             selectedServices = [];
@@ -929,94 +945,94 @@
                     duracao: parseInt(card.dataset.duracao)
                 });
             });
-    
+
             if (selectedServices.length === 0) {
                 showToast('Selecione pelo menos um serviço para continuar', 'error');
                 return false;
             }
-    
+
             // Salvar serviços selecionados no sessionStorage para uso nos próximos passos
             sessionStorage.setItem('selectedServices', JSON.stringify(selectedServices));
-            
+
             nextStep(1);
             return true;
         }
-    
+
         // PASSO 2: VALIDAÇÃO DE PROFISSIONAL
         function validateStep2() {
             const profissionalSelecionado = document.querySelector('input[name="profissional"]:checked');
-            
+
             if (!profissionalSelecionado) {
                 showToast('Selecione um profissional para continuar', 'error');
                 return false;
             }
-    
+
             selectedProfessional = profissionalSelecionado.value;
-            
+
             // Obter nome do profissional para exibição
             let profissionalNome = 'Qualquer profissional';
             if (selectedProfessional !== 'qualquer') {
                 const card = profissionalSelecionado.closest('.profissional-card-premium');
                 profissionalNome = card.querySelector('h3').textContent;
             }
-            
+
             // Salvar profissional selecionado
             sessionStorage.setItem('selectedProfessional', JSON.stringify({
                 id: selectedProfessional,
                 nome: profissionalNome
             }));
-            
+
             nextStep(2);
             return true;
         }
-    
+
         // PASSO 3: VALIDAÇÃO DE DATA E HORÁRIO
         function validateStep3() {
             if (!selectedDate) {
                 showToast('Selecione uma data para continuar', 'error');
                 return false;
             }
-            
+
             if (!selectedTime) {
                 showToast('Selecione um horário para continuar', 'error');
                 return false;
             }
-    
+
             // Salvar data e horário
             sessionStorage.setItem('selectedDateTime', JSON.stringify({
                 date: selectedDate,
                 time: selectedTime
             }));
-            
+
             nextStep(3);
             updateResumo();
             return true;
         }
-    
+
         // Funções do Calendário
         function updateCalendar() {
             const year = currentMonth.getFullYear();
             const month = currentMonth.getMonth();
-            
-            document.getElementById('mesAtual').textContent = 
+
+            document.getElementById('mesAtual').textContent =
                 currentMonth.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
-            
+
             const firstDay = new Date(year, month, 1);
             const lastDay = new Date(year, month + 1, 0);
-            
+
             let daysHtml = '';
-            
+
             // Dias do mês anterior
             for (let i = 0; i < firstDay.getDay(); i++) {
                 daysHtml += '<div class="calendario-dia outro-mes"></div>';
             }
-            
+
             // Dias do mês atual
             for (let d = 1; d <= lastDay.getDate(); d++) {
                 const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
                 const isUnavailable = unavailableDates.includes(dateStr);
                 const isToday = dateStr === new Date().toISOString().split('T')[0];
-                
+
                 daysHtml += `
                     <div class="calendario-dia ${isUnavailable ? 'indisponivel' : ''} ${isToday ? 'hoje' : ''}" 
                          onclick="selectDate('${dateStr}')">
@@ -1024,47 +1040,47 @@
                     </div>
                 `;
             }
-            
+
             document.getElementById('calendarioDias').innerHTML = daysHtml;
         }
-    
+
         function changeMonth(delta) {
             currentMonth.setMonth(currentMonth.getMonth() + delta);
             updateCalendar();
         }
-    
+
         function selectDate(dateStr) {
             if (unavailableDates.includes(dateStr)) {
                 showToast('Data indisponível para agendamento', 'error');
                 return;
             }
-            
+
             selectedDate = dateStr;
             document.querySelectorAll('.calendario-dia').forEach(dia => {
                 dia.classList.remove('selected');
             });
             event.target.classList.add('selected');
-            
+
             // Atualizar label da data selecionada
             const dataObj = new Date(dateStr + 'T12:00:00');
             const dataLabel = document.querySelector('.horarios-data');
             if (dataLabel) {
-                dataLabel.textContent = dataObj.toLocaleDateString('pt-BR', { 
-                    day: '2-digit', 
-                    month: 'long' 
+                dataLabel.textContent = dataObj.toLocaleDateString('pt-BR', {
+                    day: '2-digit',
+                    month: 'long'
                 });
             }
-            
+
             updateAvailableTimes(dateStr);
         }
-    
+
         function generateTimeSlots() {
             const horarios = [
                 '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
                 '13:00', '13:30', '14:00', '14:30', '15:00', '15:30',
                 '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30'
             ];
-            
+
             let html = '';
             horarios.forEach(horario => {
                 const isUnavailable = unavailableTimes.includes(horario);
@@ -1076,40 +1092,40 @@
                     </button>
                 `;
             });
-            
+
             const horariosGrid = document.getElementById('horariosGrid');
             if (horariosGrid) {
                 horariosGrid.innerHTML = html;
             }
         }
-    
+
         function updateAvailableTimes(date) {
-    // CORREÇÃO: Lista de horários que estarão disponíveis (todos exceto os indisponíveis)
-    const horariosDisponiveis = [
-        '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
-        '13:00', '13:30', '14:00', '14:30', '15:00', '15:30',
-        '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30'
-    ];
-    
-    // Filtrar apenas os que não estão na lista de indisponíveis
-    const horariosFiltrados = horariosDisponiveis.filter(h => !unavailableTimes.includes(h));
-    
-    let html = '';
-    horariosFiltrados.forEach(horario => {
-        html += `
+            // CORREÇÃO: Lista de horários que estarão disponíveis (todos exceto os indisponíveis)
+            const horariosDisponiveis = [
+                '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
+                '13:00', '13:30', '14:00', '14:30', '15:00', '15:30',
+                '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30'
+            ];
+
+            // Filtrar apenas os que não estão na lista de indisponíveis
+            const horariosFiltrados = horariosDisponiveis.filter(h => !unavailableTimes.includes(h));
+
+            let html = '';
+            horariosFiltrados.forEach(horario => {
+                html += `
             <button class="horario-btn" 
                     onclick="selectTime('${horario}')">
                 ${horario}
             </button>
         `;
-    });
-    
-    const horariosGrid = document.getElementById('horariosGrid');
-    if (horariosGrid) {
-        horariosGrid.innerHTML = html;
-    }
-}
-    
+            });
+
+            const horariosGrid = document.getElementById('horariosGrid');
+            if (horariosGrid) {
+                horariosGrid.innerHTML = html;
+            }
+        }
+
         function selectTime(time) {
             selectedTime = time;
             document.querySelectorAll('.horario-btn').forEach(btn => {
@@ -1117,25 +1133,25 @@
             });
             event.target.classList.add('selected');
         }
-    
+
         // PASSO 4: FUNÇÕES DE CONFIRMAÇÃO
         function updateResumo() {
             // Recuperar dados salvos
             const servicos = JSON.parse(sessionStorage.getItem('selectedServices')) || selectedServices;
             const profissional = JSON.parse(sessionStorage.getItem('selectedProfessional'));
             const dateTime = JSON.parse(sessionStorage.getItem('selectedDateTime'));
-    
+
             if (!servicos || servicos.length === 0) {
                 servicos = selectedServices;
             }
-    
+
             // Atualizar lista de serviços
             const servicosList = document.getElementById('resumoServicosList');
             if (servicosList) {
                 let servicosHtml = '';
                 let totalPreco = 0;
                 let totalDuracao = 0;
-                
+
                 servicos.forEach(servico => {
                     servicosHtml += `
                         <div class="servico-resumo-item">
@@ -1146,20 +1162,20 @@
                     totalPreco += servico.preco;
                     totalDuracao += servico.duracao;
                 });
-                
+
                 servicosList.innerHTML = servicosHtml;
-                
+
                 // Duração total
                 const horas = Math.floor(totalDuracao / 60);
                 const minutos = totalDuracao % 60;
                 const duracaoTexto = horas > 0 ? `${horas}h ${minutos}min` : `${minutos}min`;
                 document.getElementById('resumoDuracao').textContent = duracaoTexto;
-                
+
                 // Total
-                document.getElementById('resumoTotal').textContent = 
+                document.getElementById('resumoTotal').textContent =
                     `R$ ${totalPreco.toFixed(2).replace('.', ',')}`;
             }
-    
+
             // Profissional
             if (profissional) {
                 document.getElementById('resumoProfissional').textContent = profissional.nome;
@@ -1167,74 +1183,74 @@
                 const profNome = document.querySelector('input[name="profissional"]:checked')?.closest('.profissional-card-premium')?.querySelector('h3')?.textContent || 'Qualquer profissional';
                 document.getElementById('resumoProfissional').textContent = profNome;
             }
-    
+
             // Data e Horário
             if (dateTime) {
                 const dataObj = new Date(dateTime.date + 'T12:00:00');
-                document.getElementById('resumoData').textContent = 
+                document.getElementById('resumoData').textContent =
                     dataObj.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
                 document.getElementById('resumoHorario').textContent = dateTime.time;
             } else if (selectedDate && selectedTime) {
                 const dataObj = new Date(selectedDate + 'T12:00:00');
-                document.getElementById('resumoData').textContent = 
+                document.getElementById('resumoData').textContent =
                     dataObj.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
                 document.getElementById('resumoHorario').textContent = selectedTime;
             }
         }
-    
+
         function finalizarAgendamento() {
             const nome = document.getElementById('nome_completo')?.value;
             const telefone = document.getElementById('telefone_contato')?.value;
             const email = document.getElementById('email_contato')?.value;
             const termos = document.getElementById('termos')?.checked;
-    
+
             if (!nome || !telefone || !email) {
                 showToast('Preencha todos os campos obrigatórios', 'error');
                 return;
             }
-    
+
             if (!termos) {
                 showToast('Aceite os termos para continuar', 'error');
                 return;
             }
-    
+
             if (!validatePhone(telefone)) {
                 showToast('Telefone inválido. Use o formato (11) 99999-9999', 'error');
                 return;
             }
-    
+
             if (!validateEmail(email)) {
                 showToast('E-mail inválido', 'error');
                 return;
             }
-    
+
             // Mostrar loading no botão
             const btn = document.querySelector('#step4 .btn-primary-premium');
             btn.classList.add('loading');
             btn.disabled = true;
-    
+
             // Simular envio
             setTimeout(() => {
                 btn.classList.remove('loading');
                 btn.disabled = false;
-                
+
                 // Salvar agendamento
                 saveAgendamento();
-                
+
                 // Mostrar modal de sucesso
                 showSuccessModal();
             }, 1500);
         }
-    
+
         function validatePhone(phone) {
             const numbers = phone.replace(/\D/g, '');
             return numbers.length >= 10 && numbers.length <= 11;
         }
-    
+
         function validateEmail(email) {
             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         }
-    
+
         function saveAgendamento() {
             const servicos = JSON.parse(sessionStorage.getItem('selectedServices')) || selectedServices;
             const profissional = JSON.parse(sessionStorage.getItem('selectedProfessional'));
@@ -1242,7 +1258,7 @@
                 date: selectedDate,
                 time: selectedTime
             };
-    
+
             const agendamento = {
                 id: Date.now(),
                 servicos: servicos,
@@ -1258,56 +1274,56 @@
                 status: 'confirmado',
                 timestamp: new Date().toISOString()
             };
-    
+
             // Salvar no localStorage
             let agendamentos = JSON.parse(localStorage.getItem('agendamentos') || '[]');
             agendamentos.push(agendamento);
             localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
-            
+
             // Limpar sessionStorage
             sessionStorage.clear();
         }
-    
+
         function showSuccessModal() {
             const profissional = JSON.parse(sessionStorage.getItem('selectedProfessional'));
             const dateTime = JSON.parse(sessionStorage.getItem('selectedDateTime')) || {
                 date: selectedDate,
                 time: selectedTime
             };
-    
+
             if (dateTime.date) {
                 const dataObj = new Date(dateTime.date + 'T12:00:00');
-                document.getElementById('modalData').textContent = 
+                document.getElementById('modalData').textContent =
                     dataObj.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
             }
-            
+
             document.getElementById('modalHorario').textContent = dateTime.time || selectedTime;
-            document.getElementById('modalProfissional').textContent = 
-                profissional?.nome || 
-                document.querySelector('input[name="profissional"]:checked')?.closest('.profissional-card-premium')?.querySelector('h3')?.textContent || 
+            document.getElementById('modalProfissional').textContent =
+                profissional?.nome ||
+                document.querySelector('input[name="profissional"]:checked')?.closest('.profissional-card-premium')?.querySelector('h3')?.textContent ||
                 'Qualquer profissional';
-            
+
             document.getElementById('successModal').style.display = 'flex';
         }
-    
+
         function showToast(message, type = 'info') {
             const toast = document.getElementById('toast');
             toast.textContent = message;
             toast.className = `toast-premium show toast-${type}`;
-            
+
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 3000);
         }
-    
+
         function updateQuickSummary() {
             const selectedCount = document.querySelectorAll('.servico-check-premium:checked').length;
             const summary = document.getElementById('quickSummary');
-            
+
             if (selectedCount > 0) {
                 summary.style.display = 'block';
                 document.getElementById('selectedCount').textContent = selectedCount;
-                
+
                 let total = 0;
                 document.querySelectorAll('.servico-check-premium:checked').forEach(checkbox => {
                     const card = checkbox.closest('.servico-card-premium');
@@ -1318,20 +1334,20 @@
                 summary.style.display = 'none';
             }
         }
-    
+
         // Fechar modal ao clicar fora
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             const modal = document.getElementById('successModal');
             if (event.target === modal) {
                 modal.style.display = 'none';
             }
         }
-    
+
         // Corrigir o link do botão "Próximo passo" no passo 1
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const btnProximoPasso = document.querySelector('#step1 .btn-primary-premium a');
             if (btnProximoPasso) {
-                btnProximoPasso.addEventListener('click', function(e) {
+                btnProximoPasso.addEventListener('click', function (e) {
                     e.preventDefault();
                     validateStep1();
                 });
@@ -1339,4 +1355,5 @@
         });
     </script>
 </body>
+
 </html>
