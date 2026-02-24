@@ -1488,7 +1488,9 @@ body::before {
     align-items: center;
     gap: 10px;
     border: none;
+    
 }
+
 
 .btn-outline-premium {
     background: transparent;
