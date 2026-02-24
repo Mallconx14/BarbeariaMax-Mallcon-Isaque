@@ -79,7 +79,7 @@ body {
     font-weight: bold;
     background: linear-gradient(45deg, var(--primary-color), var(--gold-color));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent
 }
 
 .menu-toggle {
