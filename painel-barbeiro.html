@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Barbeiro | Barbearia Vintage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ===== VARIÁVEIS ===== */
+        :root {
+            --primary-gold: #D4AF37;
+            --primary-gold-dark: #B8860B;
+            --primary-dark: #1C1C1C;
+            --primary-brown: #2C1E1E;
+            --secondary-brown: #3D2B1F;
+            --text-light: #F5F5F5;
+            --text-gray: #CCCCCC;
+            --text-muted: #999999;
+            --success: #2E7D32;
+            --success-light: #81C784;
+            --warning: #F9A825;
+            --warning-light: #FFB74D;
+            --danger: #C62828;
+            --info: #1565C0;
+            --shadow-gold: 0 8px 20px rgba(212, 175, 55, 0.3);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+            --transition-base: all 0.3s ease;
+            --font-title: 'Times New Roman', serif;
+            --font-body: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+        }
+
+        /* ===== LAYOUT PRINCIPAL ===== */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            background: linear-gradient(180deg, var(--primary-brown) 0%, var(--secondary-brown) 100%);
+            border-right: 2px solid var(--primary-gold);
+            padding: 30px 20px;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.03"><path d="M20 20 L80 20 L80 80 L20 80 Z" fill="none" stroke="%23D4AF37" stroke-width="2"/><circle cx="50" cy="50" r="15" fill="none" stroke="%23D4AF37" stroke-width="2"/></svg>');
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 0 10px 30px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary-brown);
+            transform: rotate(45deg);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .logo-icon i {
+            transform: rotate(-45deg);
+        }
+
+        .logo-text {
+            font-family: var(--font-title);
+            font-size: 1.4rem;
+            color: var(--text-light);
+        }
+
+        .logo-text span {
+            color: var(--primary-gold);
+            display: block;
+            font-size: 0.9rem;
+            font-family: var(--font-body);
+            letter-spacing: 2px;
+        }
+
+        /* Perfil do Barbeiro */
+        .barber-profile {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .profile-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary-brown);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--text-light);
+        }
+
+        .profile-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 15px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-gold);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        /* Menu de Navegação */
+        .nav-menu {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .nav-item {
+            margin-bottom: 5px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 20px;
+            color: var(--text-gray);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: var(--transition-base);
+        }
+
+        .nav-link i {
+            width: 24px;
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+            transition: var(--transition-base);
+        }
+
+        .nav-link:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--text-light);
+            transform: translateX(5px);
+        }
+
+        .nav-link.active {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-dark) 100%);
+            color: var(--primary-brown);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .nav-link.active i {
+            color: var(--primary-brown);
+        }
+
+        .nav-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+            margin: 20px 0;
+        }
+
+        /* ===== CONTEÚDO PRINCIPAL ===== */
+        .main-content {
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Header */
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            background: rgba(44, 30, 19, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 20px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .header-title h1 {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            margin-bottom: 5px;
+            color: var(--text-light);
+        }
+
+        .header-title p {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        .header-date {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .date-badge {
+            background: rgba(212, 175, 55, 0.15);
+            padding: 12px 25px;
+            border-radius: 50px;
+            color: var(--primary-gold);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .date-badge i {
+            color: var(--primary-gold);
+        }
+
+        .notification-badge {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background: rgba(212, 175, 55, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition-base);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .notification-badge:hover {
+            background: var(--primary-gold);
+            color: var(--primary-brown);
+        }
+
+        .notification-badge::after {
+            content: '3';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            background: var(--danger);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Cards de Estatísticas */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(44, 30, 19, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: var(--transition-base);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-gold);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .stat-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary-gold);
+        }
+
+        .stat-content h3 {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            font-weight: normal;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-content p {
+            font-family: var(--font-title);
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--text-light);
+            line-height: 1;
+        }
+
+        .stat-content p small {
+            font-size: 1rem;
+            color: var(--primary-gold);
+            margin-left: 5px;
+        }
+
+        /* Título de Seção */
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title h2 {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-light);
+        }
+
+        .section-title h2 i {
+            color: var(--primary-gold);
+        }
+
+        .section-badge {
+            background: rgba(212, 175, 55, 0.15);
+            padding: 8px 16px;
+            border-radius: 30px;
+            color: var(--primary-gold);
+            font-size: 0.9rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        /* Timeline */
+        .timeline-container {
+            background: rgba(44, 30, 19, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .timeline-header h3 {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .today-badge {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-dark) 100%);
+            color: var(--primary-brown);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .timeline-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 100px 1fr auto auto;
+            gap: 20px;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 18px;
+            transition: var(--transition-base);
+            border: 1px solid transparent;
+        }
+
+        .timeline-item:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateX(5px);
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .timeline-item.in-progress {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        .timeline-time {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-gold);
+            background: rgba(212, 175, 55, 0.15);
+            padding: 8px 15px;
+            border-radius: 40px;
+            text-align: center;
+        }
+
+        .timeline-client {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .client-initials {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--secondary-brown) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-gold);
+            font-weight: bold;
+            border: 2px solid var(--primary-gold);
+        }
+
+        .client-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--text-light);
+        }
+
+        .client-details p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .client-details p i {
+            color: var(--primary-gold);
+            font-size: 0.8rem;
+        }
+
+        .timeline-status {
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            background: rgba(46, 125, 50, 0.15);
+            color: var(--success-light);
+            border: 1px solid rgba(129, 199, 132, 0.3);
+        }
+
+        .timeline-status.warning {
+            background: rgba(249, 168, 37, 0.15);
+            color: var(--warning-light);
+            border-color: rgba(255, 183, 77, 0.3);
+        }
+
+        .timeline-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: var(--transition-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-icon:hover {
+            background: var(--primary-gold);
+            color: var(--primary-brown);
+            border-color: var(--primary-gold);
+        }
+
+        /* Grid de Agendamentos */
+        .appointments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .appointment-card {
+            background: rgba(44, 30, 19, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 22px;
+            overflow: hidden;
+            transition: var(--transition-base);
+        }
+
+        .appointment-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-gold);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .card-header {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-header h3 {
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .card-time {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--primary-gold);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--text-gray);
+        }
+
+        .info-row i {
+            width: 20px;
+            color: var(--primary-gold);
+        }
+
+        .services-list {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+        }
+
+        .services-list h4 {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .service-tag {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .card-footer {
+            padding: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-primary, .btn-outline {
+            flex: 1;
+            padding: 12px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-base);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-dark) 100%);
+            color: var(--primary-brown);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--text-light);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-gold);
+            color: var(--primary-gold);
+        }
+
+        /* Mini Calendário */
+        .calendar-container {
+            background: rgba(44, 30, 19, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 25px;
+            padding: 30px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .calendar-header h3 {
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-light);
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .calendar-nav-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: var(--transition-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar-nav-btn:hover {
+            background: var(--primary-gold);
+            color: var(--primary-brown);
+        }
+
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            color: var(--primary-gold);
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition-base);
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .calendar-day:hover {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--primary-gold);
+        }
+
+        .calendar-day.has-appointments::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+        }
+
+        .calendar-day.today {
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+            font-weight: bold;
+        }
+
+        .calendar-day.selected {
+            background: var(--primary-gold);
+            color: var(--primary-brown);
+            font-weight: bold;
+        }
+
+        .calendar-day.other-month {
+            opacity: 0.3;
+        }
+
+        /* Toast Notification */
+        .toast-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+        }
+
+        .toast {
+            background: rgba(44, 30, 19, 0.95);
+            backdrop-filter: blur(10px);
+            border-left: 4px solid var(--primary-gold);
+            color: var(--text-light);
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: slideIn 0.3s ease;
+        }
+
+        .toast.success {
+            border-left-color: var(--success);
+        }
+
+        .toast.error {
+            border-left-color: var(--danger);
+        }
+
+        .toast i {
+            font-size: 1.2rem;
+        }
+
+        .toast.success i {
+            color: var(--success-light);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        /* Menu Mobile */
+        .mobile-menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gold);
+            border: none;
+            border-radius: 12px;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .mobile-menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: var(--primary-brown);
+            transition: var(--transition-base);
+        }
+
+        /* Responsividade */
+        @media (max-width: 1200px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: fixed;
+                left: -280px;
+                height: 100vh;
+                z-index: 999;
+                transition: left 0.3s ease;
+            }
+            
+            .sidebar.active {
+                left: 0;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            
+            .content-header {
+                margin-top: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .timeline-client {
+                justify-content: center;
+            }
+            
+            .timeline-actions {
+                justify-content: center;
+            }
+            
+            .appointments-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .header-date {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Mobile Toggle -->
+    <button class="mobile-menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <i class="fas fa-cut"></i>
+                </div>
+                <div class="logo-text">
+                    BARBEARIA<br>
+                    <span>VINTAGE</span>
+                </div>
+            </div>
+
+            <div class="barber-profile">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h3>João Silva</h3>
+                        <div class="profile-status">
+                            <span class="status-dot"></span>
+                            <span>Online</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">4.9</div>
+                        <div class="stat-label">Avaliação</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">128</div>
+                        <div class="stat-label">Clientes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Anos</div>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-cut"></i>
+                        <span>Serviços</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Agenda</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>Clientes</span>
+                    </a>
+                </li>
+                <li class="nav-divider"></li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Configurações</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <div class="content-header">
+                <div class="header-title">
+                    <h1>Bem-vindo, João</h1>
+                    <p>Aqui está o resumo dos seus agendamentos de hoje</p>
+                </div>
+                <div class="header-date">
+                    <div class="date-badge">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>25 de Fevereiro, 2026</span>
+                    </div>
+                    <div class="notification-badge">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Agendamentos Hoje</h3>
+                        <p>08</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Concluídos</h3>
+                        <p>03</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Em Andamento</h3>
+                        <p>02</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Faturamento</h3>
+                        <p>R$ 525</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="section-title">
+                <h2><i class="fas fa-clock"></i> Linha do Tempo</h2>
+                <span class="section-badge">5 agendamentos hoje</span>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-header">
+                    <h3><i class="fas fa-calendar-day"></i> Seus Agendamentos de Hoje</h3>
+                    <span class="today-badge">Hoje, 25 Fev</span>
+                </div>
+
+                <div class="timeline-list">
+                    <!-- Agendamento 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-time">09:00</div>
+                        <div class="timeline-client">
+                            <div class="client-initials">RM</div>
+                            <div class="client-details">
+                                <h4>Ricardo Mendes</h4>
+                                <p><i class="fas fa-cut"></i> Corte Clássico + Barba</p>
+                            </div>
+                        </div>
+                        <span class="timeline-status">Confirmado</span>
+                        <div class="timeline-actions">
+                            <button class="btn-icon" onclick="startAppointment('09:00')" title="Iniciar Atendimento">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="btn-icon" onclick="viewDetails('Ricardo Mendes')" title="Ver Detalhes">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Agendamento 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-time">10:30</div>
+                        <div class="timeline-client">
+                            <div class="client-initials">AS</div>
+                            <div class="client-details">
+                                <h4>André Santos</h4>
+                                <p><i class="fas fa-razor"></i> Barba Completa + Sobrancelha</p>
+                            </div>
+                        </div>
+                        <span class="timeline-status">Confirmado</span>
+                        <div class="timeline-actions">
+                            <button class="btn-icon" onclick="startAppointment('10:30')" title="Iniciar Atendimento">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="btn-icon" onclick="viewDetails('André Santos')" title="Ver Detalhes">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Agendamento 3 (Em Andamento) -->
+                    <div class="timeline-item in-progress">
+                        <div class="timeline-time">11:30</div>
+                        <div class="timeline-client">
+                            <div class="client-initials">MP</div>
+                            <div class="client-details">
+                                <h4>Marcos Paulo</h4>
+                                <p><i class="fas fa-pen-fancy"></i> Pigmentação + Corte</p>
+                            </div>
+                        </div>
+                        <span class="timeline-status warning">Em andamento</span>
+                        <div class="timeline-actions">
+                            <button class="btn-icon" onclick="finishAppointment()" title="Finalizar Atendimento">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button class="btn-icon" onclick="viewDetails('Marcos Paulo')" title="Ver Detalhes">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Agendamento 4 -->
+                    <div class="timeline-item">
+                        <div class="timeline-time">14:00</div>
+                        <div class="timeline-client">
+                            <div class="client-initials">PL</div>
+                            <div class="client-details">
+                                <h4>Pedro Lima</h4>
+                                <p><i class="fas fa-cut"></i> Corte Degradê</p>
+                            </div>
+                        </div>
+                        <span class="timeline-status">Confirmado</span>
+                        <div class="timeline-actions">
+                            <button class="btn-icon" onclick="startAppointment('14:00')" title="Iniciar Atendimento">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="btn-icon" onclick="viewDetails('Pedro Lima')" title="Ver Detalhes">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Agendamento 5 -->
+                    <div class="timeline-item">
+                        <div class="timeline-time">15:30</div>
+                        <div class="timeline-client">
+                            <div class="client-initials">CF</div>
+                            <div class="client-details">
+                                <h4>Carlos Ferreira</h4>
+                                <p><i class="fas fa-razor"></i> Barba Navalha</p>
+                            </div>
+                        </div>
+                        <span class="timeline-status">Confirmado</span>
+                        <div class="timeline-actions">
+                            <button class="btn-icon" onclick="startAppointment('15:30')" title="Iniciar Atendimento">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="btn-icon" onclick="viewDetails('Carlos Ferreira')" title="Ver Detalhes">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção de Agendamentos Detalhados -->
+            <div class="section-title">
+                <h2><i class="fas fa-calendar-alt"></i> Próximos Agendamentos</h2>
+                <span class="section-badge">Total: 5 agendamentos</span>
+            </div>
+
+            <div class="appointments-grid">
+                <!-- Card 1 -->
+                <div class="appointment-card">
+                    <div class="card-header">
+                        <h3>Ricardo Mendes</h3>
+                        <span class="card-time">09:00</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>(11) 98765-4321</span>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-envelope"></i>
+                            <span>ricardo@email.com</span>
+                        </div>
+                        <div class="services-list">
+                            <h4>Serviços</h4>
+                            <div class="service-tags">
+                                <span class="service-tag">Corte Clássico</span>
+                                <span class="service-tag">Barba Completa</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-primary" onclick="startAppointment('09:00')">
+                            <i class="fas fa-play"></i> Iniciar
+                        </button>
+                        <button class="btn-outline" onclick="viewDetails('Ricardo Mendes')">
+                            <i class="fas fa-eye"></i> Ver
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="appointment-card">
+                    <div class="card-header">
+                        <h3>André Santos</h3>
+                        <span class="card-time">10:30</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>(11) 97654-3210</span>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-envelope"></i>
+                            <span>andre@email.com</span>
+                        </div>
+                        <div class="services-list">
+                            <h4>Serviços</h4>
+                            <div class="service-tags">
+                                <span class="service-tag">Barba Completa</span>
+                                <span class="service-tag">Sobrancelha</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-primary" onclick="startAppointment('10:30')">
+                            <i class="fas fa-play"></i> Iniciar
+                        </button>
+                        <button class="btn-outline" onclick="viewDetails('André Santos')">
+                            <i class="fas fa-eye"></i> Ver
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3 (Em andamento) -->
+                <div class="appointment-card" style="border-left: 4px solid var(--primary-gold);">
+                    <div class="card-header">
+                        <h3>Marcos Paulo</h3>
+                        <span class="card-time">11:30</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>(11) 96543-2109</span>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-envelope"></i>
+                            <span>marcos@email.com</span>
+                        </div>
+                        <div class="services-list">
+                            <h4>Serviços</h4>
+                            <div class="service-tags">
+                                <span class="service-tag">Pigmentação</span>
+                                <span class="service-tag">Corte</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-primary" onclick="finishAppointment()">
+                            <i class="fas fa-check"></i> Finalizar
+                        </button>
+                        <button class="btn-outline" onclick="viewDetails('Marcos Paulo')">
+                            <i class="fas fa-eye"></i> Ver
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="appointment-card">
+                    <div class="card-header">
+                        <h3>Pedro Lima</h3>
+                        <span class="card-time">14:00</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>(11) 95432-1098</span>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-envelope"></i>
+                            <span>pedro@email.com</span>
+                        </div>
+                        <div class="services-list">
+                            <h4>Serviços</h4>
+                            <div class="service-tags">
+                                <span class="service-tag">Corte Degradê</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-primary" onclick="startAppointment('14:00')">
+                            <i class="fas fa-play"></i> Iniciar
+                        </button>
+                        <button class="btn-outline" onclick="viewDetails('Pedro Lima')">
+                            <i class="fas fa-eye"></i> Ver
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="appointment-card">
+                    <div class="card-header">
+                        <h3>Carlos Ferreira</h3>
+                        <span class="card-time">15:30</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>(11) 94321-0987</span>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-envelope"></i>
+                            <span>carlos@email.com</span>
+                        </div>
+                        <div class="services-list">
+                            <h4>Serviços</h4>
+                            <div class="service-tags">
+                                <span class="service-tag">Barba Navalha</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-primary" onclick="startAppointment('15:30')">
+                            <i class="fas fa-play"></i> Iniciar
+                        </button>
+                        <button class="btn-outline" onclick="viewDetails('Carlos Ferreira')">
+                            <i class="fas fa-eye"></i> Ver
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mini Calendário -->
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <h3><i class="fas fa-calendar-alt" style="color: var(--primary-gold);"></i> Calendário de Agendamentos</h3>
+                    <div class="calendar-nav">
+                        <button class="calendar-nav-btn" onclick="previousMonth()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="calendar-nav-btn" onclick="nextMonth()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="weekdays">
+                    <div>DOM</div>
+                    <div>SEG</div>
+                    <div>TER</div>
+                    <div>QUA</div>
+                    <div>QUI</div>
+                    <div>SEX</div>
+                    <div>SÁB</div>
+                </div>
+                <div class="calendar-grid">
+                    <div class="calendar-day other-month">26</div>
+                    <div class="calendar-day other-month">27</div>
+                    <div class="calendar-day other-month">28</div>
+                    <div class="calendar-day other-month">29</div>
+                    <div class="calendar-day other-month">30</div>
+                    <div class="calendar-day other-month">31</div>
+                    <div class="calendar-day">1</div>
+                    <div class="calendar-day">2</div>
+                    <div class="calendar-day">3</div>
+                    <div class="calendar-day">4</div>
+                    <div class="calendar-day">5</div>
+                    <div class="calendar-day">6</div>
+                    <div class="calendar-day">7</div>
+                    <div class="calendar-day">8</div>
+                    <div class="calendar-day">9</div>
+                    <div class="calendar-day">10</div>
+                    <div class="calendar-day">11</div>
+                    <div class="calendar-day">12</div>
+                    <div class="calendar-day">13</div>
+                    <div class="calendar-day">14</div>
+                    <div class="calendar-day">15</div>
+                    <div class="calendar-day has-appointments">16</div>
+                    <div class="calendar-day has-appointments">17</div>
+                    <div class="calendar-day has-appointments">18</div>
+                    <div class="calendar-day">19</div>
+                    <div class="calendar-day">20</div>
+                    <div class="calendar-day has-appointments">21</div>
+                    <div class="calendar-day has-appointments">22</div>
+                    <div class="calendar-day">23</div>
+                    <div class="calendar-day">24</div>
+                    <div class="calendar-day today selected">25</div>
+                    <div class="calendar-day has-appointments">26</div>
+                    <div class="calendar-day has-appointments">27</div>
+                    <div class="calendar-day">28</div>
+                    <div class="calendar-day">29</div>
+                    <div class="calendar-day">30</div>
+                    <div class="calendar-day">31</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        // Menu Mobile
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Funções de Notificação
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            const icon = type === 'success' ? 'fa-check-circle' : 'fa-info-circle';
+            
+            toast.innerHTML = `
+                <i class="fas ${icon}"></i>
+                <span>${message}</span>
+            `;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Ações dos Agendamentos
+        function startAppointment(time) {
+            showToast(`Atendimento das ${time} iniciado com sucesso!`, 'success');
+        }
+
+        function finishAppointment() {
+            showToast('Atendimento finalizado com sucesso!', 'success');
+        }
+
+        function viewDetails(clientName) {
+            showToast(`Visualizando detalhes de ${clientName}`, 'info');
+        }
+
+        // Navegação do Calendário
+        function previousMonth() {
+            showToast('Mês anterior', 'info');
+        }
+
+        function nextMonth() {
+            showToast('Próximo mês', 'info');
+        }
+
+        // Fechar sidebar ao clicar fora (mobile)
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992) {
+                if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+
+        // Atualizar status dos botões
+        document.querySelectorAll('.btn-primary, .btn-outline, .btn-icon').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        });
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', () => {
+            showToast('Bem-vindo ao painel, João!', 'success');
+        });
+    </script>
+</body>
+</html>
